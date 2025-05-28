@@ -6,8 +6,8 @@ export default function Loading() {
     <section className="text-white py-8">
       <div className="max-w-2xl text-center">
         <p className="text-xl font-mono">Loading stack items...</p>
-        {/* Você pode adicionar um spinner ou qualquer elemento visual de carregamento aqui */}
-        {/* Exemplo de spinner simples (você pode usar CSS para animar) */}
+        {}
+        {}
         <div className="mt-4 w-8 h-8 border-4 border-t-4 border-blue-500 border-solid rounded-full animate-spin mx-auto"></div>
       </div>
     </section>

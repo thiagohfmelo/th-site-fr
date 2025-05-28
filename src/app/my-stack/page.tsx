@@ -89,7 +89,7 @@ export default function MyStackPage() {
         <div className="space-y-8">
           {filteredCategories.length > 0 ? (
             filteredCategories.map((cat) => (
-              <div key={cat.id} id={cat.id}> {/* Adicionado ID para navegação por âncora se quiser */}
+              <div key={cat.id} id={cat.id}> {}
                 <h3 className="text-2xl font-semibold mb-3 font-mono text-zinc-400">{cat.category}</h3>
                 <ul className="list-disc list-inside space-y-1 text-lg leading-relaxed">
                   {cat.items.map((item, index) => (

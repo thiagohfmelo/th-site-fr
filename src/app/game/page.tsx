@@ -1,10 +1,8 @@
-// src/app/game/page.tsx
-'use client'; // Este é um Client Component
+'use client'; 
 
 import React, { useState, useEffect, useCallback } from 'react'; // Adicionado useCallback
 
-// Removida a importação de Metadata
-// import type { Metadata } from 'next'; // <-- REMOVIDA ESTA LINHA
+
 
 interface Attempt {
   guess: string;
@@ -12,8 +10,8 @@ interface Attempt {
   cows: number;
 }
 
-const GAME_LENGTH = 4; // Número de dígitos na senha
-const MAX_ATTEMPTS = 10; // Número máximo de tentativas
+const GAME_LENGTH = 4; 
+const MAX_ATTEMPTS = 10; 
 
 export default function GamePage() {
   const [secret, setSecret] = useState<string>('');
@@ -23,55 +21,55 @@ export default function GamePage() {
   const [gameWon, setGameWon] = useState<boolean>(false);
   const [message, setMessage] = useState<string>('');
 
-  // Função para gerar uma senha aleatória
-  const generateSecret = useCallback(() => { // Envolvido em useCallback
-    const digits = '0123456789'; // MUDANÇA: de 'let' para 'const'
+  
+  const generateSecret = useCallback(() => { 
+    const digits = '0123456789'; 
     let newSecret = '';
     while (newSecret.length < GAME_LENGTH) {
       const char = digits[Math.floor(Math.random() * digits.length)];
-      if (!newSecret.includes(char)) { // Garante dígitos únicos
+      if (!newSecret.includes(char)) { 
         newSecret += char;
       }
     }
     return newSecret;
-  }, []); // Sem dependências para generateSecret
+  }, []); 
 
-  // Função para iniciar um novo jogo
-  const startNewGame = useCallback(() => { // Envolvido em useCallback
+  
+  const startNewGame = useCallback(() => { 
     setSecret(generateSecret());
     setGuess('');
     setAttempts([]);
     setGameOver(false);
     setGameWon(false);
     setMessage('');
-  }, [generateSecret]); // Depende de generateSecret
+  }, [generateSecret]); 
 
-  // Inicializa o jogo ao carregar o componente
+ 
   useEffect(() => {
     startNewGame();
-  }, [startNewGame]); // Incluído startNewGame no array de dependências
+  }, [startNewGame]); 
 
-  // Função para verificar uma tentativa
+  
   const checkGuess = useCallback((currentGuess: string, currentSecret: string) => { // Envolvido em useCallback
     let bulls = 0;
     let cows = 0;
 
     for (let i = 0; i < GAME_LENGTH; i++) {
       if (currentGuess[i] === currentSecret[i]) {
-        bulls++; // Dígito correto na posição correta
+        bulls++; 
       } else if (currentSecret.includes(currentGuess[i])) {
-        cows++; // Dígito correto, mas na posição errada
+        cows++; 
       }
     }
     return { bulls, cows };
-  }, []); // Sem dependências
+  }, []); 
 
-  // Lidar com o envio da tentativa
+  
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (gameOver) return;
 
-    // Validação da entrada
+    
     if (guess.length !== GAME_LENGTH || !/^\d+$/.test(guess) || new Set(guess).size !== GAME_LENGTH) {
       setMessage(`Please enter a unique ${GAME_LENGTH}-digit number.`);
       return;
@@ -80,7 +78,7 @@ export default function GamePage() {
     const { bulls, cows } = checkGuess(guess, secret);
     const newAttempt: Attempt = { guess, bulls, cows };
 
-    const updatedAttempts = [newAttempt, ...attempts]; // Adiciona a nova tentativa no início
+    const updatedAttempts = [newAttempt, ...attempts]; 
     setAttempts(updatedAttempts);
     setGuess(''); // Limpa o input
 
@@ -92,7 +90,7 @@ export default function GamePage() {
       setMessage(`Game Over! You ran out of attempts. The secret number was ${secret}.`);
       setGameOver(true);
     } else {
-      setMessage(''); // Limpa mensagens anteriores
+      setMessage(''); 
     }
   };
 

@@ -1,4 +1,3 @@
-// src/components/Navbar.tsx
 'use client'; 
 
 import Link from 'next/link';
@@ -17,7 +16,7 @@ const Navbar: React.FC = () => {
   return (
     <nav className="text-white py-4">
       <div className="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between px-8">
-        {/* Título e descrição */}
+        {}
         <div className="mb-4 sm:mb-0">
           <h1 className="text-4xl font-bold font-mono tracking-tighter">
             thhq
@@ -27,7 +26,7 @@ const Navbar: React.FC = () => {
           </p>
         </div>
 
-        {/* Links de navegação */}
+        {}
         <ul className="flex flex-wrap gap-x-6 gap-y-2 text-xl font-mono">
           <li>
             <Link href="/" className="hover:text-gray-400 transition-colors duration-200">
@@ -44,13 +43,13 @@ const Navbar: React.FC = () => {
               my work
             </Link>
           </li>
-          {/* NOVO ITEM: Link para a página do jogo */}
+          {}
           <li>
             <Link href="/game" className="hover:text-gray-400 transition-colors duration-200">
               game
             </Link>
           </li>
-          {/* ITEM EXISTENTE: Dropdown para 'my stack' - MANTIDO INALTERADO */}
+          {}
           <li
             className="relative group"
             onMouseEnter={() => setIsDropdownOpen(true)}

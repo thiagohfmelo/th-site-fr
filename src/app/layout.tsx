@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { Inter, Inconsolata } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar'; // Importação padrão
+import Navbar from '@/components/Navbar'; 
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const inconsolata = Inconsolata({ subsets: ['latin'], variable: '--font-inconsolata' });

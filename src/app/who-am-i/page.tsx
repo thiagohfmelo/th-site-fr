@@ -1,4 +1,3 @@
-// src/app/who-am-i/page.tsx
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -17,7 +16,7 @@ export default function WhoAmIPage() {
         <p className="text-lg leading-relaxed mb-4">
           When {"I'm"} not coding, you can usually find me exploring new music, learning about coding, or just relaxing with friends.
         </p>
-        {/* O parágrafo 3 estava separado, unificado para ter as aspas corrigidas de uma vez */}
+        {}
       </div>
     </section>
   );
