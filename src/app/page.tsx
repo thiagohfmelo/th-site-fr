@@ -32,9 +32,9 @@ export default function HomePage() {
           Welcome to my website. You can find my projects, music, social media and some info about me here.
         </p>
         <p className="text-lg leading-relaxed mb-8">
-          {"I'm"} online and it's <span className="font-bold">{currentTime}</span> in <span className="font-bold">{currentLocation}</span>.
+          {"I'm"} online and {"it's"} <span className="font-bold">{currentTime}</span> in <span className="font-bold">{currentLocation}</span>.
         </p>
-        {/* ^^^^^^^^^^^^ ESSA É A LINHA 36 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
+        {/* ^^^^^^^^^^^^ ESSA É A LINHA 35 (ou similar após suas edições) ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
         <div className="flex space-x-6 mb-10">
           <a href="https://github.com/thiagohfmelo" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors duration-200">
