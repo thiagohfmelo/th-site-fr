@@ -1,7 +1,8 @@
+// src/app/layout.tsx
 import type { Metadata } from 'next';
-import { Inter, Inconsolata } from 'next/font/google'; 
+import { Inter, Inconsolata } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/Navbar'; // Importação padrão
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const inconsolata = Inconsolata({ subsets: ['latin'], variable: '--font-inconsolata' });
@@ -18,11 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {}
       <body className={`${inter.variable} ${inconsolata.variable} font-sans bg-black text-white min-h-screen flex flex-col`}>
-        <Navbar /> {}
+        <Navbar />
         <main className="flex-grow container mx-auto px-8 py-8">
-          {children} {}
+          {children}
         </main>
       </body>
     </html>

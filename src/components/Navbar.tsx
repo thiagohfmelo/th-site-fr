@@ -1,3 +1,4 @@
+// src/components/Navbar.tsx
 'use client'; 
 
 import Link from 'next/link';
@@ -14,9 +15,8 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="text-white py-4 px-8"> {/* Removido px-8 daqui, pois o container já terá */}
-      <div className="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between px-8"> {/* Adicionado px-8 aqui */}
-        {}
+    <nav className="text-white py-4">
+      <div className="container mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between px-8">
         <div className="mb-4 sm:mb-0">
           <h1 className="text-4xl font-bold font-mono tracking-tighter">
             thhq
@@ -26,7 +26,6 @@ const Navbar: React.FC = () => {
           </p>
         </div>
 
-        {}
         <ul className="flex flex-wrap gap-x-6 gap-y-2 text-xl font-mono">
           <li>
             <Link href="/" className="hover:text-gray-400 transition-colors duration-200">
@@ -43,7 +42,6 @@ const Navbar: React.FC = () => {
               my work
             </Link>
           </li>
-          {}
           <li
             className="relative group"
             onMouseEnter={() => setIsDropdownOpen(true)}
@@ -52,7 +50,6 @@ const Navbar: React.FC = () => {
             <span className="cursor-pointer hover:text-gray-400 transition-colors duration-200 flex items-center">
               my stack <span className="ml-1 text-base">▼</span>
             </span>
-            {}
             <div
               className={`absolute left-0 mt-2 w-48 bg-zinc-800 text-white rounded-md shadow-lg py-2
                          ${isDropdownOpen ? 'opacity-100 visible scale-100' : 'opacity-0 invisible scale-95'}

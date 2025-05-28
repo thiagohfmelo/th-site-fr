@@ -1,6 +1,5 @@
 'use client'; 
 
-import type { Metadata } from 'next'; 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation'; 
 

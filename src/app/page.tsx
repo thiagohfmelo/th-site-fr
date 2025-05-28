@@ -1,3 +1,4 @@
+// src/app/page.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -5,27 +6,24 @@ import { FaGithub, FaDiscord, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 export default function HomePage() {
   const [currentTime, setCurrentTime] = useState<string>('');
-  const [currentLocation, setCurrentLocation] = useState<string>('Brazil');
+  // Mudança: currentLocation agora é uma constante, não um estado
+  const currentLocation: string = 'Brazil';
 
   useEffect(() => {
-    
     const updateTime = () => {
       const now = new Date();
-      
       const formattedTime = now.toLocaleTimeString('en-US', {
         hour: '2-digit',
         minute: '2-digit',
-        hour12: true, 
+        hour12: true,
       });
       setCurrentTime(formattedTime);
     };
 
-    updateTime(); 
-    const intervalId = setInterval(updateTime, 60 * 1000); 
-
-    
+    updateTime();
+    const intervalId = setInterval(updateTime, 60 * 1000);
     return () => clearInterval(intervalId);
-  }, []); 
+  }, []);
 
   return (
     <section className="text-white py-8">
@@ -35,10 +33,9 @@ export default function HomePage() {
           Welcome to my website. You can find my projects, music, social media and some info about me here.
         </p>
         <p className="text-lg leading-relaxed mb-8">
-          I'm online and it's <span className="font-bold">{currentTime}</span> in <span className="font-bold">{currentLocation}</span>.
+          {"I'm"} online and it's <span className="font-bold">{currentTime}</span> in <span className="font-bold">{currentLocation}</span>.
         </p>
 
-        {}
         <div className="flex space-x-6 mb-10">
           <a href="https://github.com/thiagohfmelo" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors duration-200">
             <FaGithub size={30} />
@@ -54,7 +51,6 @@ export default function HomePage() {
           </a>
         </div>
 
-        {}
         <div className="flex items-center text-gray-500 text-lg">
           <span className="mr-3 text-2xl">...</span> currently not listening
         </div>
