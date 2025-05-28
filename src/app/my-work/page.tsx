@@ -13,7 +13,7 @@ export default function MyWorkPage() {
       id: 1,
       title: 'Personal Website (th-site)',
       description: 'This very website! Built with Next.js, Tailwind CSS, and TypeScript. A minimalist portfolio to showcase my skills.',
-      link: 'https://th-site',
+      link: 'https://th-five.vercel.app/',
       github: 'https://github.com/thiagohfmelo/th-site',
     },
     {
