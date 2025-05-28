@@ -1,15 +1,10 @@
 // src/app/game/page.tsx
 'use client'; // Este é um Client Component
 
-import React, { useState, useEffect } from 'react';
-import type { Metadata } from 'next'; // Mantemos para referência, mas não exportamos aqui.
+import React, { useState, useEffect, useCallback } from 'react'; // Adicionado useCallback
 
-// A metadata para Client Components é geralmente definida em um Server Component pai,
-// ou se for estática, o Vercel/Next.js pode pegar do layout global ou de um arquivo dedicado.
-// export const metadata: Metadata = {
-//   title: 'Jogo da Senha - Meu Portfólio',
-//   description: 'Jogue o Jogo da Senha (Bulls and Cows) no meu portfólio!',
-// };
+// Removida a importação de Metadata
+// import type { Metadata } from 'next'; // <-- REMOVIDA ESTA LINHA
 
 interface Attempt {
   guess: string;
@@ -29,8 +24,8 @@ export default function GamePage() {
   const [message, setMessage] = useState<string>('');
 
   // Função para gerar uma senha aleatória
-  const generateSecret = () => {
-    let digits = '0123456789';
+  const generateSecret = useCallback(() => { // Envolvido em useCallback
+    const digits = '0123456789'; // MUDANÇA: de 'let' para 'const'
     let newSecret = '';
     while (newSecret.length < GAME_LENGTH) {
       const char = digits[Math.floor(Math.random() * digits.length)];
@@ -39,24 +34,25 @@ export default function GamePage() {
       }
     }
     return newSecret;
-  };
+  }, []); // Sem dependências para generateSecret
 
-  // Inicializa o jogo ao carregar o componente ou iniciar um novo jogo
-  useEffect(() => {
-    startNewGame();
-  }, []);
-
-  const startNewGame = () => {
+  // Função para iniciar um novo jogo
+  const startNewGame = useCallback(() => { // Envolvido em useCallback
     setSecret(generateSecret());
     setGuess('');
     setAttempts([]);
     setGameOver(false);
     setGameWon(false);
     setMessage('');
-  };
+  }, [generateSecret]); // Depende de generateSecret
+
+  // Inicializa o jogo ao carregar o componente
+  useEffect(() => {
+    startNewGame();
+  }, [startNewGame]); // Incluído startNewGame no array de dependências
 
   // Função para verificar uma tentativa
-  const checkGuess = (currentGuess: string, currentSecret: string) => {
+  const checkGuess = useCallback((currentGuess: string, currentSecret: string) => { // Envolvido em useCallback
     let bulls = 0;
     let cows = 0;
 
@@ -68,7 +64,7 @@ export default function GamePage() {
       }
     }
     return { bulls, cows };
-  };
+  }, []); // Sem dependências
 
   // Lidar com o envio da tentativa
   const handleSubmit = (e: React.FormEvent) => {
