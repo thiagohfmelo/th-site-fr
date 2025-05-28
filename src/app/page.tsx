@@ -6,8 +6,7 @@ import { FaGithub, FaDiscord, FaEnvelope, FaLinkedin } from 'react-icons/fa';
 
 export default function HomePage() {
   const [currentTime, setCurrentTime] = useState<string>('');
-  // Mudança: currentLocation agora é uma constante, não um estado
-  const currentLocation: string = 'Brazil';
+  const currentLocation: string = 'Brazil'; // Já corrigido para const
 
   useEffect(() => {
     const updateTime = () => {
@@ -35,6 +34,7 @@ export default function HomePage() {
         <p className="text-lg leading-relaxed mb-8">
           {"I'm"} online and it's <span className="font-bold">{currentTime}</span> in <span className="font-bold">{currentLocation}</span>.
         </p>
+        {/* ^^^^^^^^^^^^ ESSA É A LINHA 36 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */}
 
         <div className="flex space-x-6 mb-10">
           <a href="https://github.com/thiagohfmelo" target="_blank" rel="noopener noreferrer" className="text-white hover:text-gray-400 transition-colors duration-200">
@@ -54,6 +54,8 @@ export default function HomePage() {
         <div className="flex items-center text-gray-500 text-lg">
           <span className="mr-3 text-2xl">...</span> currently not listening
         </div>
+        {/* Seção "My Hobbies" (se você já adicionou) */}
+        {/* ... */}
       </div>
     </section>
   );
